@@ -15,16 +15,22 @@ let secretNumber = Math.trunc(Math.random() * 20) + 1;
 let score = 20;
 let highscore = 0;
 
+const displayMessage = function (message) {
+  document.querySelector('.message').textContent = message;
+};
+
 document.querySelector('.check').addEventListener('click', function () {
   const guess = Number(document.querySelector('.guess').value);
   console.log(guess, typeof guess);
 
   // when no input
   if (!guess) {
-    document.querySelector('.message').textContent = 'No Number!';
+    // document.querySelector('.message').textContent = '
+    displayMessage('No Number!');
     //when player wins
   } else if (guess === secretNumber) {
-    document.querySelector('.message').textContent = '🏆 Correct Number!';
+    // document.querySelector('.message').textContent =
+    displayMessage('🏆 Correct Number!');
     document.querySelector('.number').textContent = secretNumber;
     document.querySelector('body').style.backgroundColor = '#60b347';
 
@@ -40,7 +46,8 @@ document.querySelector('.check').addEventListener('click', function () {
       score--;
       document.querySelector('.score').textContent = score;
     } else {
-      document.querySelector('.message').textContent = '💢 You Lost the game!';
+      // document.querySelector('.message').textContent =
+      displayMessage('💢 You Lost the game!');
       document.querySelector('.score').textContent = 0;
     }
   }
